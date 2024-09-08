@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "./screens/Home";
 import NotFound from "./screens/NotFound";
+import Chat from "./screens/Chat";
 import Login from "./screens/Login";
 import Loading from "./screens/Loading";
 import Signup from "./screens/Signup";
@@ -11,6 +12,7 @@ function App() {
     { path: "/login", element: <Login /> },
     { path: "/signup", element: <Signup /> },
     { path: "/", element: <Loading /> },
+    { path: "/chat", element: <Chat /> },
     { path: "/home", element: <Home /> },
     { path: "*", element: <NotFound /> },
   ]);
