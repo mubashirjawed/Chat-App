@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
+  const [myUid, setUid] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,6 +13,8 @@ export default function Home() {
   }, []);
 
   const getUser = async () => {
+    let uid = await localStorage.getItem("userId");
+    setUid(uid);
     const list = [];
     const dbSnap = await getDocs(collection(db, "user"));
     dbSnap.forEach((item) => {
@@ -29,7 +32,7 @@ export default function Home() {
       {users.map((item) => (
         <div
           key={item.uid}
-          onClick={() => navigate("/chat", { state: item })}
+          onClick={() => navigate("/chat", { state: { ...item, myUid } })}
           className=" cursor-pointer w-11/12 shadow-md bg-blue-50 border border-black shadow-gray-500 rounded-md mx-auto my-4 py-5 px-10 flex justify-between "
         >
           <div className="flex items-center">
