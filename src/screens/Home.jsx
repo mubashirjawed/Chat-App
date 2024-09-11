@@ -23,10 +23,16 @@ export default function Home() {
     setUsers(list);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("userid");
+    navigate("/login");
+  };
+
   return (
     <>
-      <div className="bg-[#0f546f] w-full p-6 mb-16">
-        <h1 className="text-2xl font-bold text-white">User List</h1>
+      <div className="bg-[#0f546f] w-full p-6 mb-16 flex justify-between text-2xl font-bold text-white">
+        <h1>User List</h1>
+        <button onClick={handleLogout}>logout</button>
       </div>
 
       {users.map((item) => (
